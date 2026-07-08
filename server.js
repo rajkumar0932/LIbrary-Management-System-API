@@ -1,6 +1,27 @@
 import express from "express";
-import "dotenv/config"
+import "dotenv/config";
+import { dbConnect } from "./config/dbConnect.js";
+import bookRoutes from "./routes/book.routes.js";
+import { errorHandler, notFound } from "./middleware/error.middleware.js";
+
 const app = express();
-app.listen(process.env.port | 2000 , () =>{
-    console.log(`Your port is running on ${process.env.port} `);
-})
+app.use(express.json());
+
+dbConnect().catch((err) => {
+  console.error("DB connection failed:", err.message);
+  process.exit(1);
+});
+
+app.get("/", (req, res) => {
+  res.json({ message: "Library Management System API is running" });
+});
+
+app.use("/books", bookRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 2000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
