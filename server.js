@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import { dbConnect } from "./config/dbConnect.js";
 import bookRoutes from "./routes/book.routes.js";
+import authorRoutes from "./routes/author.routes.js";
 import { errorHandler, notFound } from "./middleware/error.middleware.js";
 
 const app = express();
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/books", bookRoutes);
+app.use("/authors", authorRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

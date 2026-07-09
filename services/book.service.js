@@ -14,6 +14,7 @@ export const getAllBooksService = async (query) => {
 
   const [data, total] = await Promise.all([
     Book.find(filter)
+      .populate("author")
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limitNum),
@@ -29,8 +30,7 @@ export const getAllBooksService = async (query) => {
 };
 
 export const getBookByIdService = (id) => {
-  // add .populate("author") once the Author model exists (Day 3-4)
-  return Book.findById(id);
+  return Book.findById(id).populate("author");
 };
 
 export const createBookService = (data) => {
