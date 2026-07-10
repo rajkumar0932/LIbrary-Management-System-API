@@ -5,8 +5,10 @@ import {
   createBook,
   updateBook,
   deleteBook,
+  uploadBookCover,
 } from "../controllers/book.controller.js";
 import { verifyToken } from "../middleware/auth.middleware.js";
+import { uploadCover } from "../middleware/upload.middleware.js";
 
 const router = express.Router();
 
@@ -16,5 +18,7 @@ router.get("/:id", getBookById);
 router.post("/", verifyToken, createBook);
 router.put("/:id", verifyToken, updateBook);
 router.delete("/:id", verifyToken, deleteBook);
+
+router.patch("/:id/upload-cover", verifyToken, uploadCover, uploadBookCover);
 
 export default router;

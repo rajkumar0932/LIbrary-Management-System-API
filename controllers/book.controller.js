@@ -59,3 +59,19 @@ export const deleteBook = async (req, res, next) => {
     next(err);
   }
 };
+
+export const uploadBookCover = async (req, res, next) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: "No image file uploaded" });
+    }
+    const coverImage = `/uploads/covers/${req.file.filename}`;
+    const book = await updateBookService(req.params.id, { coverImage });
+    if (!book) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+    res.status(200).json({ message: "Book cover uploaded successfully", book });
+  } catch (err) {
+    next(err);
+  }
+};

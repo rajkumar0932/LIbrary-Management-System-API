@@ -7,6 +7,7 @@ import { errorHandler, notFound } from "./middleware/error.middleware.js";
 
 const app = express();
 app.use(express.json());
+app.use("/uploads", express.static("uploads"));
 
 dbConnect().catch((err) => {
   console.error("DB connection failed:", err.message);
