@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+
+// author model
 const authorSchema = new mongoose.Schema(
   {
     name: {
@@ -22,8 +24,6 @@ const authorSchema = new mongoose.Schema(
       trim: true,
     },
   },
-  {
-    timestamps: true,
-  },
+  { timestamps: true },
 );
 export const Author = mongoose.model("Author", authorSchema);

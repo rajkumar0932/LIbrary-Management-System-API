@@ -12,19 +12,11 @@ export const getAllAuthorsService = async (query) => {
   const skip = (pageNum - 1) * limitNum;
 
   const [data, total] = await Promise.all([
-    Author.find(filter)
-      .sort({ createdAt: -1 })
-      .skip(skip)
-      .limit(limitNum),
+    Author.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limitNum),
     Author.countDocuments(filter),
   ]);
 
-  return {
-    data,
-    total,
-    page: pageNum,
-    totalPages: Math.ceil(total / limitNum),
-  };
+  return { data, total, page: pageNum, totalPages: Math.ceil(total / limitNum) };
 };
 
 export const getAuthorByIdService = (id) => {
@@ -42,6 +34,4 @@ export const updateAuthorService = (id, data) => {
   });
 };
 
-export const deleteAuthorService = (id) => {
-  return Author.findByIdAndDelete(id);
-};
+export const deleteAuthorService = (id) => Author.findByIdAndDelete(id);

@@ -6,6 +6,7 @@ export const dbConnect = async ()=>{
 
     }
     catch(e){
-        throw new Error ("something went wrong while connecting to db");
+        console.error("DB connection error:", e.message); 
+        process.exit(1);
     }
 }

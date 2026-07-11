@@ -1,5 +1,6 @@
 import { Book } from "../models/Book.models/Book.models.js";
 
+// get all books with filters + pagination
 export const getAllBooksService = async (query) => {
   const { title, author, category, page = 1, limit = 10 } = query;
 

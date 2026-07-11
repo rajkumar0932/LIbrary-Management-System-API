@@ -6,6 +6,7 @@ import {
   deleteBookService,
 } from "../services/book.service.js";
 
+// get all books
 export const getAllBooks = async (req, res, next) => {
   try {
     const result = await getAllBooksService(req.query);
@@ -18,15 +19,14 @@ export const getAllBooks = async (req, res, next) => {
 export const getBookById = async (req, res, next) => {
   try {
     const book = await getBookByIdService(req.params.id);
-    if (!book) {
-      return res.status(404).json({ message: "Book not found" });
-    }
+    if (!book) return res.status(404).json({ message: "Book not found" });
     res.status(200).json(book);
   } catch (err) {
     next(err);
   }
 };
 
+// add a new book
 export const createBook = async (req, res, next) => {
   try {
     const book = await createBookService(req.body);
@@ -51,25 +51,24 @@ export const updateBook = async (req, res, next) => {
 export const deleteBook = async (req, res, next) => {
   try {
     const book = await deleteBookService(req.params.id);
-    if (!book) {
-      return res.status(404).json({ message: "Book not found" });
-    }
+    if (!book) return res.status(404).json({ message: "Book not found" });
     res.status(200).json({ message: "Book deleted successfully" });
   } catch (err) {
     next(err);
   }
 };
 
+// upload cover image for a book
 export const uploadBookCover = async (req, res, next) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: "No image file uploaded" });
     }
+
     const coverImage = `/uploads/covers/${req.file.filename}`;
     const book = await updateBookService(req.params.id, { coverImage });
-    if (!book) {
-      return res.status(404).json({ message: "Book not found" });
-    }
+    if (!book) return res.status(404).json({ message: "Book not found" });
+
     res.status(200).json({ message: "Book cover uploaded successfully", book });
   } catch (err) {
     next(err);

@@ -18,15 +18,14 @@ export const getAllAuthors = async (req, res, next) => {
 export const getAuthorById = async (req, res, next) => {
   try {
     const author = await getAuthorByIdService(req.params.id);
-    if (!author) {
-      return res.status(404).json({ message: "Author not found" });
-    }
+    if (!author) return res.status(404).json({ message: "Author not found" });
     res.status(200).json(author);
   } catch (err) {
     next(err);
   }
 };
 
+// create a new author
 export const createAuthor = async (req, res, next) => {
   try {
     const author = await createAuthorService(req.body);
@@ -51,9 +50,7 @@ export const updateAuthor = async (req, res, next) => {
 export const deleteAuthor = async (req, res, next) => {
   try {
     const author = await deleteAuthorService(req.params.id);
-    if (!author) {
-      return res.status(404).json({ message: "Author not found" });
-    }
+    if (!author) return res.status(404).json({ message: "Author not found" });
     res.status(200).json({ message: "Author deleted successfully" });
   } catch (err) {
     next(err);

@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+
+// book model
 const bookSchema = new mongoose.Schema(
   {
     title: {
@@ -8,7 +10,7 @@ const bookSchema = new mongoose.Schema(
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Author",
+      ref: "Author", // link to the author
       required: true,
     },
     isbn: {
@@ -47,7 +49,7 @@ const bookSchema = new mongoose.Schema(
       min: [0, "Available copies cannot be negative"],
     },
     coverImage: {
-      type: String, 
+      type: String, // path of the uploaded cover
       default: "",
     },
   },

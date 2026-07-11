@@ -13,6 +13,7 @@ const router = express.Router();
 router.get("/", getAllAuthors);
 router.get("/:id", getAuthorById);
 
+// these need auth
 router.post("/", verifyToken, createAuthor);
 router.put("/:id", verifyToken, updateAuthor);
 router.delete("/:id", verifyToken, deleteAuthor);
