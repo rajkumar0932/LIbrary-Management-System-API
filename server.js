@@ -4,6 +4,7 @@ import { dbConnect } from "./config/dbConnect.js";
 import bookRoutes from "./routes/book.routes.js";
 import authorRoutes from "./routes/author.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import loanRoutes from "./routes/loan.routes.js";
 import { errorHandler, notFound } from "./middleware/error.middleware.js";
 
 const app = express();
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 app.use("/books", bookRoutes);
 app.use("/authors", authorRoutes);
 app.use("/users", userRoutes);
+app.use("/loans", loanRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
