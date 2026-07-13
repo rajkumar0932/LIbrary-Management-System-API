@@ -9,8 +9,12 @@ import {
 } from "../controllers/book.controller.js";
 import { verifyToken } from "../middleware/auth.middleware.js";
 import { uploadCover } from "../middleware/upload.middleware.js";
+import reviewRoutes from "./review.routes.js";
 
 const router = express.Router();
+
+// reviews live under a book -> /books/:id/reviews
+router.use("/:id/reviews", reviewRoutes);
 
 // public
 router.get("/", getAllBooks);
