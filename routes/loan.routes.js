@@ -4,7 +4,6 @@ import {
   getLoanById,
   createLoan,
   updateLoan,
-  deleteLoan,
   returnLoan,
 } from "../controllers/loan.controller.js";
 import { verifyToken } from "../middleware/auth.middleware.js";
@@ -16,11 +15,9 @@ router.get("/", verifyToken, getAllLoans);
 router.get("/:id", verifyToken, getLoanById);
 
 router.post("/", verifyToken, createLoan);
-
-// keep return above the plain /:id put so the word "return" isnt read as an id thing
-router.patch("/:id/return", verifyToken, returnLoan);
-
 router.put("/:id", verifyToken, updateLoan);
-router.delete("/:id", verifyToken, deleteLoan);
+
+// delete a loan = mark it as returned (puts the copy back). matches the assignment
+router.delete("/:id", verifyToken, returnLoan);
 
 export default router;
