@@ -1,0 +1,491 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="seq_register" name="1. Register">
+    <mxGraphModel dx="1000" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1080" pageHeight="572" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="seq_register_title" value="Sequence — User Registration  (POST /users/register)" style="text;html=1;fontSize=15;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="24" width="1000" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_register_p0" value="Member (Client)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="76" width="150" height="456" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_register_p1" value="Express Route /users" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="76" width="150" height="456" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_register_p2" value="user.controller" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="76" width="150" height="456" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_register_p3" value="user.service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="76" width="150" height="456" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_register_p4" value="User Model / MongoDB" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="76" width="150" height="456" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_register_m0" value="POST /users/register  { name, email, password }" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="115" y="112" as="sourcePoint" />
+            <mxPoint x="315" y="112" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_register_m1" value="registerUser(req, res)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="152" as="sourcePoint" />
+            <mxPoint x="515" y="152" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_register_m2" value="registerUserService(req.body)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="192" as="sourcePoint" />
+            <mxPoint x="715" y="192" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_register_m3" value="User.create(data)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="232" as="sourcePoint" />
+            <mxPoint x="915" y="232" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_register_m4" value="pre('save'): bcrypt.hash(password)" style="html=1;rounded=0;fontSize=11;endArrow=block;align=left;spacingLeft=66;verticalAlign=middle;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="915" y="272" as="sourcePoint" />
+            <mxPoint x="915" y="296" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="973" y="272" />
+              <mxPoint x="973" y="296" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_register_m5" value="saved user doc" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="915" y="328" as="sourcePoint" />
+            <mxPoint x="715" y="328" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_register_m6" value="user" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="368" as="sourcePoint" />
+            <mxPoint x="515" y="368" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_register_m7" value="generateToken({ id, role })" style="html=1;rounded=0;fontSize=11;endArrow=block;align=left;spacingLeft=66;verticalAlign=middle;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="408" as="sourcePoint" />
+            <mxPoint x="515" y="432" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="573" y="408" />
+              <mxPoint x="573" y="432" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_register_m8" value="201  { message, user, token }" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="464" as="sourcePoint" />
+            <mxPoint x="115" y="464" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="seq_login" name="2. Login">
+    <mxGraphModel dx="1000" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1080" pageHeight="652" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="seq_login_title" value="Sequence — User Login  (POST /users/login)" style="text;html=1;fontSize=15;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="24" width="1000" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_login_p0" value="Member (Client)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="76" width="150" height="536" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_login_p1" value="Express Route /users" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="76" width="150" height="536" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_login_p2" value="user.controller" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="76" width="150" height="536" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_login_p3" value="user.service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="76" width="150" height="536" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_login_p4" value="User Model / MongoDB" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="76" width="150" height="536" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_login_m0" value="POST /users/login  { email, password }" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="115" y="112" as="sourcePoint" />
+            <mxPoint x="315" y="112" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_login_m1" value="loginUser(req, res)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="152" as="sourcePoint" />
+            <mxPoint x="515" y="152" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_login_m2" value="check email &amp; password present  (missing -&gt; 400)" style="html=1;rounded=0;fontSize=11;endArrow=block;align=left;spacingLeft=66;verticalAlign=middle;strokeColor=#b85450;fontColor=#b85450;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="192" as="sourcePoint" />
+            <mxPoint x="515" y="216" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="573" y="192" />
+              <mxPoint x="573" y="216" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_login_m3" value="loginUserService(email, password)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="248" as="sourcePoint" />
+            <mxPoint x="715" y="248" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_login_m4" value="User.findOne({ email }).select('+password')" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="288" as="sourcePoint" />
+            <mxPoint x="915" y="288" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_login_m5" value="user  (or null)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="915" y="328" as="sourcePoint" />
+            <mxPoint x="715" y="328" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_login_m6" value="user.matchPassword() -&gt; bcrypt.compare" style="html=1;rounded=0;fontSize=11;endArrow=block;align=left;spacingLeft=66;verticalAlign=middle;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="368" as="sourcePoint" />
+            <mxPoint x="715" y="392" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="773" y="368" />
+              <mxPoint x="773" y="392" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_login_m7" value="user   (null -&gt; 401)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="424" as="sourcePoint" />
+            <mxPoint x="515" y="424" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_login_m8" value="generateToken({ id, role })" style="html=1;rounded=0;fontSize=11;endArrow=block;align=left;spacingLeft=66;verticalAlign=middle;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="464" as="sourcePoint" />
+            <mxPoint x="515" y="488" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="573" y="464" />
+              <mxPoint x="573" y="488" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_login_m9" value="200  { message, user, token }" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="520" as="sourcePoint" />
+            <mxPoint x="115" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="seq_borrow" name="3. Borrow a Book">
+    <mxGraphModel dx="1000" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="692" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="seq_borrow_title" value="Sequence — Borrow a Book  (POST /loans)" style="text;html=1;fontSize=15;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="24" width="1200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_borrow_p0" value="Member (Client)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="76" width="150" height="576" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_borrow_p1" value="Express Route /loans" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="76" width="150" height="576" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_borrow_p2" value="verifyToken (mw)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="76" width="150" height="576" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_borrow_p3" value="loan.controller" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="76" width="150" height="576" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_borrow_p4" value="loan.service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="76" width="150" height="576" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_borrow_p5" value="Book / Loan Models" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="76" width="150" height="576" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_borrow_m0" value="POST /loans  { book, dueDate }  + Bearer token" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="115" y="112" as="sourcePoint" />
+            <mxPoint x="315" y="112" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_borrow_m1" value="verifyToken" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="152" as="sourcePoint" />
+            <mxPoint x="515" y="152" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_borrow_m2" value="jwt.verify(token) -&gt; req.user   (bad -&gt; 401)" style="html=1;rounded=0;fontSize=11;endArrow=block;align=left;spacingLeft=66;verticalAlign=middle;strokeColor=#b85450;fontColor=#b85450;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="192" as="sourcePoint" />
+            <mxPoint x="515" y="216" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="573" y="192" />
+              <mxPoint x="573" y="216" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_borrow_m3" value="next() -&gt; createLoan" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="248" as="sourcePoint" />
+            <mxPoint x="715" y="248" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_borrow_m4" value="Book.findById(book)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="288" as="sourcePoint" />
+            <mxPoint x="1115" y="288" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_borrow_m5" value="book   (null -&gt; 404)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1115" y="328" as="sourcePoint" />
+            <mxPoint x="715" y="328" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_borrow_m6" value="if availableCopies &lt; 1 -&gt; 400" style="html=1;rounded=0;fontSize=11;endArrow=block;align=left;spacingLeft=66;verticalAlign=middle;strokeColor=#b85450;fontColor=#b85450;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="368" as="sourcePoint" />
+            <mxPoint x="715" y="392" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="773" y="368" />
+              <mxPoint x="773" y="392" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_borrow_m7" value="createLoanService(userId, { book, dueDate })" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="424" as="sourcePoint" />
+            <mxPoint x="915" y="424" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_borrow_m8" value="Loan.create(...) + populate" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="915" y="464" as="sourcePoint" />
+            <mxPoint x="1115" y="464" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_borrow_m9" value="loan" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1115" y="504" as="sourcePoint" />
+            <mxPoint x="715" y="504" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_borrow_m10" value="book.availableCopies-- ; book.save()" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="544" as="sourcePoint" />
+            <mxPoint x="1115" y="544" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_borrow_m11" value="201  { message, loan }" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="584" as="sourcePoint" />
+            <mxPoint x="115" y="584" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="seq_return" name="4. Return a Book">
+    <mxGraphModel dx="1000" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="612" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="seq_return_title" value="Sequence — Return a Book  (PATCH /loans/:id/return)" style="text;html=1;fontSize=15;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="24" width="1200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_return_p0" value="Member (Client)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="76" width="150" height="496" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_return_p1" value="Express Route /loans" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="76" width="150" height="496" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_return_p2" value="verifyToken (mw)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="76" width="150" height="496" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_return_p3" value="loan.controller" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="76" width="150" height="496" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_return_p4" value="loan.service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="76" width="150" height="496" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_return_p5" value="Book / Loan Models" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="76" width="150" height="496" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_return_m0" value="PATCH /loans/:id/return  + Bearer token" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="115" y="112" as="sourcePoint" />
+            <mxPoint x="315" y="112" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_return_m1" value="verifyToken" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="152" as="sourcePoint" />
+            <mxPoint x="515" y="152" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_return_m2" value="next() -&gt; returnLoan" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="192" as="sourcePoint" />
+            <mxPoint x="715" y="192" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_return_m3" value="getLoanByIdService(id)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="232" as="sourcePoint" />
+            <mxPoint x="915" y="232" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_return_m4" value="Loan.findById(id).populate(...)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="915" y="272" as="sourcePoint" />
+            <mxPoint x="1115" y="272" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_return_m5" value="loan   (null -&gt; 404)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1115" y="312" as="sourcePoint" />
+            <mxPoint x="715" y="312" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_return_m6" value="if status == 'returned' -&gt; 400" style="html=1;rounded=0;fontSize=11;endArrow=block;align=left;spacingLeft=66;verticalAlign=middle;strokeColor=#b85450;fontColor=#b85450;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="352" as="sourcePoint" />
+            <mxPoint x="715" y="376" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="773" y="352" />
+              <mxPoint x="773" y="376" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_return_m7" value="status='returned', returnedDate ; loan.save()" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="408" as="sourcePoint" />
+            <mxPoint x="1115" y="408" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_return_m8" value="Book.findByIdAndUpdate($inc availableCopies +1)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="448" as="sourcePoint" />
+            <mxPoint x="1115" y="448" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_return_m9" value="200  { message, loan }" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="488" as="sourcePoint" />
+            <mxPoint x="115" y="488" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="seq_review" name="5. Add a Review">
+    <mxGraphModel dx="1000" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="652" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="seq_review_title" value="Sequence — Add a Review  (POST /books/:id/reviews)" style="text;html=1;fontSize=15;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="24" width="1200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_review_p0" value="Member (Client)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="76" width="150" height="536" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_review_p1" value="Route /books/:id/reviews" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="76" width="150" height="536" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_review_p2" value="verifyToken (mw)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="76" width="150" height="536" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_review_p3" value="review.controller" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="76" width="150" height="536" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_review_p4" value="review.service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="76" width="150" height="536" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_review_p5" value="Book / Review Models" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="76" width="150" height="536" as="geometry" />
+        </mxCell>
+        <mxCell id="seq_review_m0" value="POST /books/:id/reviews  { rating, review }  + Bearer" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="115" y="112" as="sourcePoint" />
+            <mxPoint x="315" y="112" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_review_m1" value="verifyToken" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="152" as="sourcePoint" />
+            <mxPoint x="515" y="152" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_review_m2" value="next() -&gt; createReview" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="192" as="sourcePoint" />
+            <mxPoint x="715" y="192" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_review_m3" value="Book.findById(:id)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="232" as="sourcePoint" />
+            <mxPoint x="1115" y="232" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_review_m4" value="book   (null -&gt; 404)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1115" y="272" as="sourcePoint" />
+            <mxPoint x="715" y="272" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_review_m5" value="findUserReviewService(userId, bookId)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="312" as="sourcePoint" />
+            <mxPoint x="915" y="312" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_review_m6" value="Review.findOne({ user, book })" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="915" y="352" as="sourcePoint" />
+            <mxPoint x="1115" y="352" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_review_m7" value="existing?   (found -&gt; 409)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1115" y="392" as="sourcePoint" />
+            <mxPoint x="715" y="392" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_review_m8" value="createReviewService(userId, bookId, body)" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="432" as="sourcePoint" />
+            <mxPoint x="915" y="432" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_review_m9" value="Review.create(...) + populate('user')" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="915" y="472" as="sourcePoint" />
+            <mxPoint x="1115" y="472" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_review_m10" value="review" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1115" y="512" as="sourcePoint" />
+            <mxPoint x="715" y="512" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq_review_m11" value="201  { message, review }" style="html=1;rounded=0;fontSize=11;verticalAlign=bottom;endArrow=open;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="552" as="sourcePoint" />
+            <mxPoint x="115" y="552" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
